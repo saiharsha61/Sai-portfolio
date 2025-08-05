@@ -144,6 +144,10 @@ ul {
   transition: background 0.3s, transform 0.3s;
 }
 
+.project .btn {
+  margin-top: 1rem;
+}
+
 .btn:hover {
   background: var(--secondary-color);
   transform: scale(1.05);
