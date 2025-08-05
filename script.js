@@ -1,22 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero title typing effect
-  const heroTitle = document.querySelector('#hero h1');
-  const text = heroTitle.textContent;
-  heroTitle.textContent = '';
-  let i = 0;
-  function typeWriter() {
-    if (i < text.length) {
-      heroTitle.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
-    } else {
-      heroTitle.style.borderRight = 'none'; // Remove cursor when done
-    }
-  }
-  typeWriter();
+  // Smooth scrolling for navigation links
+  const mainNav = document.querySelector('.main-nav');
+  const navLinks = document.querySelectorAll('.main-nav a');
+  const mobileNavToggle = document.getElementById('mobile-nav-toggle');
 
   // Smooth scrolling for navigation links
-  const navLinks = document.querySelectorAll('.main-nav a');
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
@@ -28,7 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
           block: 'start'
         });
       }
+      // Close mobile menu after click
+      if (mainNav.classList.contains('is-active')) {
+        mainNav.classList.remove('is-active');
+      }
     });
+  });
+
+  // Mobile navigation toggle
+  mobileNavToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('is-active');
   });
 
   // Interactive hover effect for sections
@@ -42,13 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       section.style.transform = 'translateY(0)';
       section.style.boxShadow = '0 0 20px rgba(0, 195, 255, 0.1), inset 0 0 15px rgba(0, 195, 255, 0.1)';
     });
-  });
-
-  // Mobile navigation toggle
-  const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-  const mainNav = document.querySelector('.main-nav');
-  mobileNavToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('is-active');
   });
 
   // Scroll-triggered animations for sections
